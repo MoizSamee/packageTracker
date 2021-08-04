@@ -117,13 +117,13 @@
                 url: "https://localhost:44301/api/ShippingInfoes/" + item.id,
                 dataType: "json",
                 contentType: "application/json",
-                data: item,
+                data: JSON.stringify(item),
                 method: "PUT"
 
             }).done(function () {
                 console.log("Update Successful"); //TODO: HANDLE THE SUCCESS STATE
 
-                alert("Order Succsessfully created")
+                alert("Order Succsessfully updated")
             }).fail(function () {
                 alert("something went bad")
                 console.log("there was an error updating order"); //TODO: HANDLE THE FAILURE STATE
