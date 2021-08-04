@@ -1,0 +1,79 @@
+﻿@page
+@model PackageTracker.Pages.CustInfo.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerInfo[0].CustId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerInfo[0].firstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerInfo[0].lastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerInfo[0].DateOfBirth)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerInfo[0].CustAddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerInfo[0].PhoneNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerInfo[0].PrimeCustomer)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.CustomerInfo) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.firstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.lastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOfBirth)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhoneNumber)
+            </td>
+            <td>
+                @{ if  (item.PrimeCustomer == true){
+                        <button type="button" class="btn btn-success">Prime</button>
+                    }
+                    else
+                    {
+                        <button type="button" class="btn btn-secondary">Regular</button>
+                        }
+                    }
+                </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.CustId">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.CustId">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.CustId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

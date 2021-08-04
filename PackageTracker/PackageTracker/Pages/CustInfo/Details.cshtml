@@ -1,0 +1,55 @@
+﻿@page
+@model PackageTracker.Pages.CustInfo.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>CustomerInfo</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CustomerInfo.firstName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CustomerInfo.firstName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CustomerInfo.lastName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CustomerInfo.lastName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CustomerInfo.DateOfBirth)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CustomerInfo.DateOfBirth)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CustomerInfo.CustAddress)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CustomerInfo.CustAddress)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CustomerInfo.PhoneNumber)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CustomerInfo.PhoneNumber)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CustomerInfo.PrimeCustomer)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CustomerInfo.PrimeCustomer)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.CustomerInfo.CustId">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

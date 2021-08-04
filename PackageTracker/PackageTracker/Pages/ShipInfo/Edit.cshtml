@@ -1,0 +1,80 @@
+﻿@page
+@model PackageTracker.Pages.ShipInfo.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>ShippingInfo</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ShippingInfo.Id" />
+            <div class="form-group">
+                <label asp-for="ShippingInfo.CustomerId" class="control-label"></label>
+                <input asp-for="ShippingInfo.CustomerId" class="form-control" />
+                <span asp-validation-for="ShippingInfo.CustomerId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ShippingInfo.PackageStatus" class="control-label"></label>
+                <input asp-for="ShippingInfo.PackageStatus" class="form-control" />
+                <span asp-validation-for="ShippingInfo.PackageStatus" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ShippingInfo.weight" class="control-label"></label>
+                <input asp-for="ShippingInfo.weight" class="form-control" />
+                <span asp-validation-for="ShippingInfo.weight" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ShippingInfo.sourceAddress" class="control-label"></label>
+                <input asp-for="ShippingInfo.sourceAddress" class="form-control" />
+                <span asp-validation-for="ShippingInfo.sourceAddress" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ShippingInfo.destinationAddress" class="control-label"></label>
+                <input asp-for="ShippingInfo.destinationAddress" class="form-control" />
+                <span asp-validation-for="ShippingInfo.destinationAddress" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ShippingInfo.updatedTimestamp" class="control-label"></label>
+                <input asp-for="ShippingInfo.updatedTimestamp" class="form-control" />
+                <span asp-validation-for="ShippingInfo.updatedTimestamp" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ShippingInfo.Latitude" class="control-label"></label>
+                <input asp-for="ShippingInfo.Latitude" class="form-control" />
+                <span asp-validation-for="ShippingInfo.Latitude" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ShippingInfo.Longitude" class="control-label"></label>
+                <input asp-for="ShippingInfo.Longitude" class="form-control" />
+                <span asp-validation-for="ShippingInfo.Longitude" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ShippingInfo.Price" class="control-label"></label>
+                <input asp-for="ShippingInfo.Price" class="form-control" />
+                <span asp-validation-for="ShippingInfo.Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ShippingInfo.deliveryImagePath" class="control-label"></label>
+                <input asp-for="ShippingInfo.deliveryImagePath" class="form-control" />
+                <span asp-validation-for="ShippingInfo.deliveryImagePath" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

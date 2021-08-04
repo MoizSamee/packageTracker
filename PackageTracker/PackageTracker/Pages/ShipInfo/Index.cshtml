@@ -1,0 +1,220 @@
+﻿@page
+@model PackageTracker.Pages.ShipInfo.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="~/css/styles.css">
+</head>
+<body>
+    @if (Model.IsMobile)
+    {
+
+
+        <div style="width: 18rem;">
+            <h1> Enter Shipping Id</h1>
+            <input type="number" placeholder="type your id" id="myInput" pattern="[0-9]+">
+            <button type="button" id="track" onclick="getInputValue()">Track</button>
+            <hr />
+
+            <div class="container" id="responsecontainer" style="display:none;">
+                <div class="row">
+                    <div class="col-sm">
+                        <div class="card" id="cardmain" style="width: 18rem;">
+                            <img class="card-img-top geomap" src="" />
+                            <div class="card-body" id="cardbody">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    }
+    else
+    {
+
+        <h1> Enter Shipping Id</h1>
+        <input type="number" placeholder="type your id" id="myInput" pattern="[0-9]+">
+        <button type="button" id="track" onclick="getInputValue()">Track</button>
+        <hr />
+
+
+        <div class="container" id="responsecontainer" style="display:none">
+            <div class="row">
+                <div class="col-sm">
+                    <div class="card" id="cardmain">
+                        <img class="card-img-top geomap" src="" />
+                        <div class="card-body" id="cardbody">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    }
+</body>
+
+</html>
+
+@section Scripts {
+    <script>
+
+        $(function () {
+
+
+        });
+
+       
+
+        function getInputValue() {
+            // Selecting the input element and get its value 
+            var inputVal = document.getElementById("myInput").value;
+            var id = parseInt(inputVal);
+            // Displaying the value
+            console.log(id);
+            
+            loadshipData(id);
+            $("#responsecontainer").toggle();
+            $("#myInput").val("");
+            
+        }
+
+        function loadshipData(id) {
+            $.ajax({
+                url: " api/ShippingInfoes/"+id,
+                dataType: 'json',
+                contentType: 'application/json',
+                method: 'GET'
+            }).done(function (responseJSON, status, xhr) {
+                // process the response when status code is 200-299
+                console.log(responseJSON);
+                builShippingList(responseJSON);
+                console.log('test message')
+                
+
+            }).fail(function (xhr, status, error) {
+                // deal with error from server (status code 400-599)
+                alert("There was an error retrieving the data");
+
+            });
+        }
+
+        function builShippingList(item) {
+            console.log(item)
+            var Longitude = null;
+            var Latitude = null;
+
+            var marker = item.latitude + "," + item.longitude;
+
+            var url = "https://maps.googleapis.com/maps/api/staticmap?center=" + marker + "&zoom=7" + "&size=600x300&&markers=color:blue%7Clabel:S%7C" + marker + "&maptype=roadmap" + "&key=AIzaSyAzucLCJ50hSRYwrlR1emZLLgpROKnQCP4";
+                
+
+            $(".geomap").attr('src', url);
+
+            var cardBody = $('<h4 class="card-title" id="title"> Shipping Id: ' + item.id +'</h4 >' +
+                '<p id =""> Delivery Status: ' + item.packageStatus + '</p >' +
+                '<p id="deliveryaddress">Delivery Address: ' + item.destinationAddress + '</p>' +
+                '<p id="lastupdate">Last Updated: ' + item.updatedTimestamp + '</p>')
+
+            console.log(cardBody)
+           @*$document.getElementById("title").appendChild(title);*@
+            $("#cardbody").append(cardBody)
+                     
+        }
+
+    </script>
+}
+
+
+
+
+
+
+
+
+
+
+    @*<table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ShippingInfo[0].CustomerId)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ShippingInfo[0].PackageStatus)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ShippingInfo[0].weight)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ShippingInfo[0].sourceAddress)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ShippingInfo[0].destinationAddress)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ShippingInfo[0].updatedTimestamp)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ShippingInfo[0].Latitude)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ShippingInfo[0].Longitude)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ShippingInfo[0].Price)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ShippingInfo[0].deliveryImagePath)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+        @foreach (var item in Model.ShippingInfo) {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CustomerId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PackageStatus)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.weight)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.sourceAddress)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.destinationAddress)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.updatedTimestamp)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Latitude)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Longitude)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Price)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.deliveryImagePath)
+                    </td>
+                    <td>
+                        <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                        <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                        <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                    </td>
+                </tr>
+        }
+            </tbody>
+        </table>*@

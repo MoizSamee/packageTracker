@@ -1,0 +1,90 @@
+﻿@page
+@model PackageTracker.Pages.ShipInfo.listshipModel
+
+@{
+    ViewData["Title"] = "listship";
+}
+
+<h1>listship</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ShippingInfo[0].CustomerId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ShippingInfo[0].PackageStatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ShippingInfo[0].weight)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ShippingInfo[0].sourceAddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ShippingInfo[0].destinationAddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ShippingInfo[0].updatedTimestamp)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ShippingInfo[0].Latitude)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ShippingInfo[0].Longitude)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ShippingInfo[0].Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ShippingInfo[0].deliveryImagePath)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.ShippingInfo) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PackageStatus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.weight)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.sourceAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.destinationAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.updatedTimestamp)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Latitude)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Longitude)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.deliveryImagePath)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

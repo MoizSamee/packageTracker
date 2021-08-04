@@ -1,0 +1,135 @@
+﻿@page
+@model PackageTracker.Pages.ShipInfo.UpdateshipingModel
+
+@{
+    ViewData["Title"] = "Updateshiping";
+}
+
+<h1>Update shipping Information</h1>
+
+
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div class="form-group">
+                <label class="control-label">Shipping ID</label>
+                <input  class="form-control" id="shippingid" />
+                
+            </div>
+            
+            <div class="form-group">
+                <label class="control-label">Status Update</label>
+                <input class="form-control" id="statusupdate" type="text"/>
+                
+            </div>
+            
+            <div class="form-group">
+                <input type="button" value="Update" onclick="updateValue()" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@*<div class="container" id="responsecontainer" style="display:none">
+    <div class="row">
+        <div class="col-sm">
+            <div class="card" id="cardmain">
+                <img class="card-img-top geomap" src="" />
+                <div class="card-body" id="cardbody">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>*@
+
+@section Scripts {
+    <script>
+        $(function () {
+
+
+        });
+
+        var locationLongitude = null;
+        var locationLatitude = null;
+        var updatedStatus = null;
+        if (navigator.geolocation != null) { // CHECK IF location IS AVAILABLE
+            console.log("has location access");
+            navigator.geolocation.getCurrentPosition(function (locationInfo) {
+                console.log("location", locationInfo);
+                locationLatitude = locationInfo.coords.latitude;
+                locationLongitude = locationInfo.coords.longitude;
+                console.log('Latitide: ' + locationLatitude);
+                console.log('Longitude: ' + locationLongitude);
+            });
+        }
+
+        @*var updatedStatus = $("#statusupdate").val();*@
+       
+
+        function updateValue(){
+            
+            console.log('into update value')
+            // Selecting the input element and get its value 
+            var inputVal = document.getElementById("shippingid").value;
+            var id = parseInt(inputVal);
+            updatedStatus = document.getElementById("statusupdate").value;
+            console.log(updatedStatus)
+            // Displaying the value
+            console.log(id);
+
+            loadshipData(id);
+            @*$("#responsecontainer").toggle();*@
+            $("#myInput").val("");
+            $("#statusupdate").val("")
+
+        }
+
+        function loadshipData(id) {
+            console.log('into get request')
+            $.ajax({
+                url: "https://localhost:44301/api/ShippingInfoes/" + id,
+                dataType: 'json',
+                contentType: 'application/json',
+                method: 'GET'
+            }).done(function (responseJSON, status, xhr) {
+                // process the response when status code is 200-299
+                @*console.log(responseJSON);*@
+                
+                responseJSON.latitude = locationLatitude;
+                responseJSON.longitude = locationLongitude;
+                responseJSON.updatedTimestamp = new Date();
+                responseJSON.packageStatus = updatedStatus;
+                @*console.log(responseJSON)*@
+                updateShippingList(responseJSON);
+                
+            }).fail(function (xhr, status, error) {
+                // deal with error from server (status code 400-599)
+                alert("There was an error retrieving the data");
+            });
+        }
+        
+        function updateShippingList(item) {
+            console.log('into Update shipping List')
+            
+            console.log(item)
+            console.log('before put')
+            $.ajax({
+                url: "https://localhost:44301/api/ShippingInfoes/" + item.id,
+                dataType: "json",
+                contentType: "application/json",
+                data: item,
+                method: "PUT"
+
+            }).done(function () {
+                console.log("Update Successful"); //TODO: HANDLE THE SUCCESS STATE
+
+                alert("Order Succsessfully created")
+            }).fail(function () {
+                alert("something went bad")
+                console.log("there was an error updating order"); //TODO: HANDLE THE FAILURE STATE
+            })
+            return false;
+
+        }
+    </script>
+}
