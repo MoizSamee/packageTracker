@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ccIUzklAYpINn7TTYph4aF+ShwjIkV9S7F/CYfg7Iz0YOQYjvKl3X7Geyrbwxqzh8KReEmM/AvEnSPGTlGjLug==",
+  "dgSpecHash": "vOKR+Rj+Vkt8GfbEUH5+DzP7Qnp/hxCeW4K+hY2KLQnKH18Y/DFQllkQOKmzd92Dama1epgfP6g9N9yzqRTpvg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Moiz\\OneDrive\\Documents\\GitHub\\IS8012\\PackageTracker\\PackageTracker\\PackageTracker.csproj",
+  "projectFilePath": "C:\\Users\\Moiz\\OneDrive\\Documents\\GitHub\\packageTracker\\PackageTracker\\PackageTracker\\PackageTracker.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Moiz\\.nuget\\packages\\csvhelper\\15.0.5\\csvhelper.15.0.5.nupkg.sha512",
     "C:\\Users\\Moiz\\.nuget\\packages\\epplus\\5.1.2\\epplus.5.1.2.nupkg.sha512",

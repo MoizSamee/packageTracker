@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Moiz\\OneDrive\\Documents\\GitHub\\IS8012\\PackageTracker\\PackageTracker\\PackageTracker.csproj": {}
+    "C:\\Users\\Moiz\\OneDrive\\Documents\\GitHub\\packageTracker\\PackageTracker\\PackageTracker\\PackageTracker.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Moiz\\OneDrive\\Documents\\GitHub\\IS8012\\PackageTracker\\PackageTracker\\PackageTracker.csproj": {
+    "C:\\Users\\Moiz\\OneDrive\\Documents\\GitHub\\packageTracker\\PackageTracker\\PackageTracker\\PackageTracker.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Moiz\\OneDrive\\Documents\\GitHub\\IS8012\\PackageTracker\\PackageTracker\\PackageTracker.csproj",
+        "projectUniqueName": "C:\\Users\\Moiz\\OneDrive\\Documents\\GitHub\\packageTracker\\PackageTracker\\PackageTracker\\PackageTracker.csproj",
         "projectName": "PackageTracker",
-        "projectPath": "C:\\Users\\Moiz\\OneDrive\\Documents\\GitHub\\IS8012\\PackageTracker\\PackageTracker\\PackageTracker.csproj",
+        "projectPath": "C:\\Users\\Moiz\\OneDrive\\Documents\\GitHub\\packageTracker\\PackageTracker\\PackageTracker\\PackageTracker.csproj",
         "packagesPath": "C:\\Users\\Moiz\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Moiz\\OneDrive\\Documents\\GitHub\\IS8012\\PackageTracker\\PackageTracker\\obj\\",
+        "outputPath": "C:\\Users\\Moiz\\OneDrive\\Documents\\GitHub\\packageTracker\\PackageTracker\\PackageTracker\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Moiz\\AppData\\Roaming\\NuGet\\NuGet.Config",

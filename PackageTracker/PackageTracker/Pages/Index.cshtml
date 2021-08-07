@@ -358,12 +358,12 @@
 
             $("#submitcreateuser").click(function () {
                 console.log('in the submit button fn')
-                var firstName = $("#firstname").val() // TODO: GET DATA FROM INPUT
-                var lastName = $("#lastname").val()
-                var address = $("#address").val()
-                var dateOfBirth = $("#dob").val()
-
-                var phoneNo = parseInt($("#phoneno").val())
+                var firstName = $("#firstname").val(); // TODO: GET DATA FROM INPUT
+                var lastName = $("#lastname").val();
+                var address = $("#address").val();
+                var dateOfBirth = $("#dob").val();
+                console.log(dateOfBirth)
+                var phoneNo = parseInt($("#phoneno").val());
                 var primeCustomer = $('#primecustomer').prop('checked')
                 console.log('making the ajax call')
                 var request = JSON.stringify({
@@ -371,7 +371,7 @@
                     lastName: lastName,
                     dateOfBirth: dateOfBirth,
                     custAddress: address,
-                    phoneNumber: phoneNo,
+                    phoneNumber: parsenInt(phoneNo),
                     primeCustomer: primeCustomer
 
                 })
